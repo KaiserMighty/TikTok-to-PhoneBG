@@ -33,6 +33,7 @@ def download_slideshows(file_path):
     service = Service(chromedriver_path)
 
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    downloaded_urls = set()
 
     try:
         with open(file_path, 'r') as file:
