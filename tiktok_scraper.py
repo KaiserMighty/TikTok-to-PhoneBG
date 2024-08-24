@@ -66,7 +66,10 @@ def download_slideshows(file_path):
             # Save each image of the slideshow
             for idx, img_element in enumerate(image_elements):
                 img_url = img_element.get_attribute('src')
-                img_name = f"slide_{idx + 1}.jpg"
+                if img_url in downloaded_urls:
+                    continue
+                downloaded_urls.add(img_url)
+                img_name = f"slide_{idx + 1}.png"
                 download_image(img_url, folder_name, img_name)
 
     finally:
